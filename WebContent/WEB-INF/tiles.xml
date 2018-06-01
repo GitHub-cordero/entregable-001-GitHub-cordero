@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="home.index" template="/WEB-INF/views/templates/templateUser.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/home/index.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="categoria.producto" template="/WEB-INF/views/templates/templateUser2.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/categoria/producto.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="categoria.detalleproducto" template="/WEB-INF/views/templates/templateUser2.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/categoria/detalleproducto.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="compra.carrito" template="/WEB-INF/views/templates/templateUser2.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/compra/carrito.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="pagina.nosotros" template="/WEB-INF/views/templates/templateUser2.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/paginas/nosotros.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="pagina.contactos" template="/WEB-INF/views/templates/templateUser2.jsp">
+		<put-attribute name="content" value="/WEB-INF/views/paginas/contactos.jsp"></put-attribute>
+	</definition>
+	
+	
+	
+
+</tiles-definitions>
+
+
+     
