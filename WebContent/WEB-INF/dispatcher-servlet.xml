@@ -28,7 +28,7 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
 		p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/clothesshopdb" p:username="root"
+		p:url="jdbc:mysql://localhost:3306/artesaniashop" p:username="root"
 		p:password="root">
 	</bean>
 
@@ -59,13 +59,9 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 
 
 
-	<!-- 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles3.TilesView">
-		</property>
-	</bean>-->
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"> 
+		</property> </bean> -->
 
 
 

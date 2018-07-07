@@ -1,5 +1,5 @@
 package pe.edu.unsch.entities;
-// Generated 07/07/2018 01:20:46 AM by Hibernate Tools 5.2.3.Final
+// Generated 07/07/2018 05:44:08 PM by Hibernate Tools 5.2.3.Final
 
 import java.util.List;
 
@@ -84,8 +84,4 @@ public class Categoria implements java.io.Serializable {
 	public void setCategories(List<Categoria> categories) {
 		this.categories = categories;
 	}
-	
-	
-	
-
 }

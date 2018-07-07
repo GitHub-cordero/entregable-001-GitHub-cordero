@@ -24,7 +24,7 @@
       </plugin>
     </plugins>
   </build>
-   	<dependencies>
+<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -113,8 +113,15 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.23</version>
+			<version>5.1.46</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.3.1.Final</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -130,10 +137,5 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.0.5.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.3.1.Final</version>
-		</dependency>
-   	</dependencies>
+	</dependencies>
 </project>
