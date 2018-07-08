@@ -1,10 +1,14 @@
+<%@page import="org.springframework.web.servlet.support.RequestContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="pe.edu.unsch.service.*"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<title>${title}</title>
 	<meta charset="UTF-8">
@@ -39,6 +43,10 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
+<%
+ApplicationContext applicationContext = RequestContextUtils.getWebApplicationContext(request);
+CategoriaSevice categorias = (CategoriaSevice) applicationContext.getBean("categoriaService");
+%>
 
 	<!-- Header -->
 	<header class="header1">
@@ -81,20 +89,29 @@
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-							<li ${url eq 'home' ? 'class="sale-noti"' : '' }>
+						
+						<li ${url eq 'home' ? 'class="sale-noti"' : '' }>
 								<a href="${pageContext.request.contextPath }/home.htm">Inicio</a>
-								
 							</li>
-
-							<li ${url eq 'productos' ? 'class="sale-noti"' : '' }>
-								<a href="${pageContext.request.contextPath }/categoria/productos.htm">Productos</a>
+							
+						<c:forEach var="category1" items="<%=categorias.findAll()%>">
+							<li>
+								<a href="${pageContext.request.contextPath }/categoria/productos.htm">${category1.nombre }</a>
+								<c:if test="${category1.categories.size() > 0 }">
+									<ul class="sub_menu">
+										<c:forEach var="category2" items="${category1.categories }">
+											<li>
+												<a href="#">${category2.nombre}</a>
+											</li>
+										</c:forEach>
+									</ul>
+								</c:if>
 							</li>
-
-							<li ${url eq 'sobre-nosotros' ? 'class="sale-noti"' : '' }>
+						</c:forEach>
+							<li>
 								<a href="${pageContext.request.contextPath }/paginas/sobre-nosotros.htm">Sobre nosotros</a>
 							</li>
-
-							<li ${url eq 'contactos' ? 'class="sale-noti"' : '' }>
+							<li>
 								<a href="${pageContext.request.contextPath }/paginas/contactos.htm">Contactos</a>
 							</li>
 						</ul>

@@ -48,7 +48,7 @@
 
 <%
 ApplicationContext applicationContext = RequestContextUtils.getWebApplicationContext(request);
-CategoriaSevice categoryService = (CategoriaSevice) applicationContext.getBean("categoriaService");
+CategoriaSevice categorias = (CategoriaSevice) applicationContext.getBean("categoriaService");
 %>
 	<!-- Header -->
 	<header class="header1">
@@ -87,30 +87,46 @@ CategoriaSevice categoryService = (CategoriaSevice) applicationContext.getBean("
 					<img src="${pageContext.request.contextPath }/assets/images/icons/logo.png" alt="IMG-LOGO">
 				</a>
 
+
+
+
+
 				<!-- Menu -->
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
-						<c:forEach var="category1" items="<%=categoryService.findAll()%>">
-							<li ${url eq 'home' ? 'class="sale-noti"' : '' }>
+						
+						<li ${url eq 'home' ? 'class="sale-noti"' : '' }>
 								<a href="${pageContext.request.contextPath }/home.htm">Inicio</a>
-								
 							</li>
-					</c:forEach>
-
+							
+						<c:forEach var="category1" items="<%=categorias.findAll()%>">
 							<li>
-								<a href="${pageContext.request.contextPath }/categoria/productos.htm">Productos</a>
+								<a href="${pageContext.request.contextPath }/categoria/productos.htm">${category1.nombre }</a>
+								<c:if test="${category1.categories.size() > 0 }">
+									<ul class="sub_menu">
+										<c:forEach var="category2" items="${category1.categories }">
+											<li>
+												<a href="#">${category2.nombre}</a>
+											</li>
+										</c:forEach>
+									</ul>
+								</c:if>
 							</li>
+						</c:forEach>
 							<li>
 								<a href="${pageContext.request.contextPath }/paginas/sobre-nosotros.htm">Sobre nosotros</a>
 							</li>
-
 							<li>
 								<a href="${pageContext.request.contextPath }/paginas/contactos.htm">Contactos</a>
 							</li>
 						</ul>
 					</nav>
 				</div>
+
+
+
+
 
 				<!-- Header Icon -->
 				<div class="header-icons">
