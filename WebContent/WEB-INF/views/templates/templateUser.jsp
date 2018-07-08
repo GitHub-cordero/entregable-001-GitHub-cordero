@@ -1,7 +1,11 @@
+<%@page import="org.springframework.web.servlet.support.RequestContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="pe.edu.unsch.service.*"%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +46,10 @@
 </head>
 <body class="animsition">
 
+<%
+ApplicationContext applicationContext = RequestContextUtils.getWebApplicationContext(request);
+CategoriaSevice categoryService = (CategoriaSevice) applicationContext.getBean("categoriaService");
+%>
 	<!-- Header -->
 	<header class="header1">
 		<!-- Header desktop -->
@@ -83,10 +91,12 @@
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
+						<c:forEach var="category1" items="<%=categoryService.findAll()%>">
 							<li ${url eq 'home' ? 'class="sale-noti"' : '' }>
 								<a href="${pageContext.request.contextPath }/home.htm">Inicio</a>
 								
 							</li>
+					</c:forEach>
 
 							<li>
 								<a href="${pageContext.request.contextPath }/categoria/productos.htm">Productos</a>

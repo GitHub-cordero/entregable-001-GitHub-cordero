@@ -28,8 +28,9 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
 		p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/artesaniashop" p:username="root"
-		p:password="root">
+		p:url="jdbc:mysql://localhost:3306/artesaniashop" 
+		p:username="root"
+		p:password="">
 	</bean>
 
 	<bean id="sessionFactory"
@@ -50,6 +51,7 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 		<property name="dataSource" ref="dataSource" />
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
 
 	<bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
