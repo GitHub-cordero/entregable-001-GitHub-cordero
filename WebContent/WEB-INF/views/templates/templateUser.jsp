@@ -115,7 +115,7 @@
 								href="${pageContext.request.contextPath }/home.htm">Inicio</a></li>
 							<c:forEach var="category1" items="<%=categorias.findAll()%>">
 								<li><a
-									href="${pageContext.request.contextPath }/categoria/productos.htm">${category1.nombre }</a>
+									href="${pageContext.request.contextPath }/categoria/productos/${category1.idcategoria }.htm">${category1.nombre }</a>
 									<c:if test="${category1.categorias.size() > 0 }">
 										<ul class="sub_menu">
 											<c:forEach var="category2" items="${category1.categorias }">

@@ -1,12 +1,16 @@
 package pe.edu.unsch.entities;
-// Generated 11-jul-2018 0:23:44 by Hibernate Tools 5.2.3.Final
+// Generated 25/07/2018 02:02:51 AM by Hibernate Tools 5.2.3.Final
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,11 +25,12 @@ public class Producto implements java.io.Serializable {
 	private Color color;
 	private Marca marca;
 	private String nombre;
-	private Long precio;
+	private BigDecimal precio;
 	private Integer cantidad;
 	private String descrition;
 	private String urlimg;
 	private Byte caracteristica;
+	private Set<Detallecompra> detallecompras = new HashSet<Detallecompra>(0);
 
 	public Producto() {
 	}
@@ -37,8 +42,9 @@ public class Producto implements java.io.Serializable {
 		this.marca = marca;
 	}
 
-	public Producto(int idproducto, Categoria categoria, Color color, Marca marca, String nombre, Long precio,
-			Integer cantidad, String descrition, String urlimg, Byte caracteristica) {
+	public Producto(int idproducto, Categoria categoria, Color color, Marca marca, String nombre, BigDecimal precio,
+			Integer cantidad, String descrition, String urlimg, Byte caracteristica,
+			Set<Detallecompra> detallecompras) {
 		this.idproducto = idproducto;
 		this.categoria = categoria;
 		this.color = color;
@@ -49,6 +55,7 @@ public class Producto implements java.io.Serializable {
 		this.descrition = descrition;
 		this.urlimg = urlimg;
 		this.caracteristica = caracteristica;
+		this.detallecompras = detallecompras;
 	}
 
 	@Id
@@ -101,12 +108,12 @@ public class Producto implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@Column(name = "precio", precision = 18, scale = 0)
-	public Long getPrecio() {
+	@Column(name = "precio", precision = 18)
+	public BigDecimal getPrecio() {
 		return this.precio;
 	}
 
-	public void setPrecio(Long precio) {
+	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
 
@@ -144,6 +151,15 @@ public class Producto implements java.io.Serializable {
 
 	public void setCaracteristica(Byte caracteristica) {
 		this.caracteristica = caracteristica;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "producto")
+	public Set<Detallecompra> getDetallecompras() {
+		return this.detallecompras;
+	}
+
+	public void setDetallecompras(Set<Detallecompra> detallecompras) {
+		this.detallecompras = detallecompras;
 	}
 
 }
