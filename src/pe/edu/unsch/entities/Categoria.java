@@ -1,10 +1,12 @@
 package pe.edu.unsch.entities;
-// Generated 07/07/2018 05:44:08 PM by Hibernate Tools 5.2.3.Final
+// Generated 24/07/2018 09:08:34 PM by Hibernate Tools 5.2.3.Final
 
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -21,7 +23,8 @@ public class Categoria implements java.io.Serializable {
 	private String nombre;
 	private String estado;
 	private String parentid;
-	private List<Categoria> categories;
+	private Set<Producto> productos = new HashSet<Producto>(0);
+	private List<Categoria> categorias;
 
 	public Categoria() {
 	}
@@ -30,11 +33,12 @@ public class Categoria implements java.io.Serializable {
 		this.idcategoria = idcategoria;
 	}
 
-	public Categoria(int idcategoria, String nombre, String estado, String parentid) {
+	public Categoria(int idcategoria, String nombre, String estado, String parentid, Set<Producto> productos) {
 		this.idcategoria = idcategoria;
 		this.nombre = nombre;
 		this.estado = estado;
 		this.parentid = parentid;
+		this.productos = productos;
 	}
 
 	@Id
@@ -75,13 +79,24 @@ public class Categoria implements java.io.Serializable {
 		this.parentid = parentid;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "parentid", referencedColumnName = "idcategoria")
-	public List<Categoria> getCategories() {
-		return categories;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
+	public Set<Producto> getProductos() {
+		return this.productos;
 	}
 
-	public void setCategories(List<Categoria> categories) {
-		this.categories = categories;
+	public void setProductos(Set<Producto> productos) {
+		this.productos = productos;
 	}
+	
+	@OneToMany
+	@JoinColumn(name = "parentid", referencedColumnName = "idcategoria")
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
+
 }

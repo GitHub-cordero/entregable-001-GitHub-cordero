@@ -30,7 +30,7 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 		p:driverClassName="com.mysql.jdbc.Driver"
 		p:url="jdbc:mysql://localhost:3306/artesaniashop" 
 		p:username="root"
-		p:password="">
+		p:password="root">
 	</bean>
 
 	<bean id="sessionFactory"

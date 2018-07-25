@@ -18,4 +18,9 @@ public class CategoriaDaoImpl implements CategoriaDao {
 	public List<Categoria> findAll() {
 		return sessionFactory.getCurrentSession().createQuery("from Categoria where parentid=0").list();
 	}
+
+	@Override
+	public Categoria find(Integer id) {
+		return (Categoria) sessionFactory.getCurrentSession().get(Categoria.class, id);
+	}
 }
