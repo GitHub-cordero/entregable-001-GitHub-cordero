@@ -34,15 +34,15 @@
 
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
-					Boxy T-Shirt with Roll Sleeve Detail
+					${producto.nombre} ${producto.descrition}
 				</h4>
 
 				<span class="m-text17">
-					$22
+					S/. ${producto.precio}
 				</span>
 
 				<p class="s-text8 p-t-10">
-					Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+					${producto.descrition}
 				</p>
 
 				<!--  -->

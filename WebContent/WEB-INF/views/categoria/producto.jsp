@@ -182,7 +182,7 @@
 
 								<div class="block2-txt p-t-20">
 									<a
-										href="${pageContext.request.contextPath }/categoria/detalleproducto.htm"
+										href="${pageContext.request.contextPath }/categoria/detalleproducto/${producto.idproducto}.htm"
 										class="block2-name dis-block s-text3 p-b-5">
 										${producto.nombre} </a> <span class="block2-price m-text6 p-r-5">
 										S/. ${producto.precio} </span>

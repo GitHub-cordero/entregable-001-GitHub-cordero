@@ -45,12 +45,14 @@ public class Producto {
 	}
 	
 	
-	@RequestMapping(value="detalleproducto",method = RequestMethod.GET)
-	public String detalle(ModelMap modelMap) {
+	@RequestMapping(value="detalleproducto/{id}",method = RequestMethod.GET)
+	public String detalle(@PathVariable("id") Integer id,ModelMap modelMap) {
 		modelMap.put("title", "Detalle y descripcion del producto");
-		modelMap.put("titulo", "Detalle del producto");
+		modelMap.put("producto", productoService.find(id));
+		/*modelMap.put("titulo", "Detalle del producto");
 		modelMap.put("subtitulo", "Mira los detalles de tu producto");
-		modelMap.put("url", "detalleproducto");
+		modelMap.put("url", "detalleproducto");*/
+		System.out.println(productoService.find(id));
 		return "categoria.detalleproducto";
 	}
 }
